@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var jsonParser =bodyParser.json();
 
-
 var Storage = function() {
   this.items = [];
   this.id = 0;
@@ -15,6 +14,11 @@ Storage.prototype.add = function(name) {
   return item;
 };
 
+Storage.prototype.delete = function(id) {
+  var item = this.items.splice(id, 1);
+  // return item;
+};
+
 var storage = new Storage();
 storage.add('Broad beans');
 storage.add('Tomatoes');
@@ -23,17 +27,37 @@ storage.add('Peppers');
 var app = express();
 app.use(express.static('public'));
 
-app.get('/items', function(req, res) {
-  res.json(storage.items);
-});
+// API end points
+  app.get('/items', function(req, res) {
+    res.json(storage.items);
+  });
 
-app.post('/items', jsonParser, function(req, res) {
-  if (!req.body) {
-    return res.sendStatus(400);
-  }
+  app.post('/items', jsonParser, function(req, res) {
+    if (!req.body) {
+      return res.sendStatus(400);
+    }
+    var item = storage.add(req.body.name);
+    res.status(201).json(item)
+  });
 
-  var item = storage.add(req.body.name);
-  res.status(201).json(item)
-});
+// If successful, your endpoint should return the deleted item, with the appropriate status code.
+// If an incorrect ID is supplied, your endpoint should fail gracefully, returning a JSON error message.
+  app.delete('/items/:id', jsonParser, function(req, res) {
+    if (!req.body) {
+      return res.sendStatus(400);
+    }
+    var id = req.params.id;
+    var item = storage.items[id];
+    console.log('id: '+ id + ' item: ' + item );
+    storage.delete(id);
+    res.status(204);
+  });
+
+  app.put('items/:id', jsonParser, function(req, res) {
+    if (!req.body) {
+      return res.sendStatus(400);
+    }
+
+  });
 
 app.listen(process.env.PORT || 8080);
