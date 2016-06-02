@@ -14,9 +14,13 @@ Storage.prototype.add = function(name) {
   return item;
 };
 
-Storage.prototype.delete = function(id) {
-  var item = this.items.splice(id, 1);
-  // return item;
+Storage.prototype.delete = function(id, item) {
+  for(var i=0; i<this.items.length; i++) {
+    if(this.items[i].id == id) {
+      this.items.splice(i, 1);
+      break;
+    }
+  }
 };
 
 var storage = new Storage();
@@ -47,10 +51,10 @@ app.use(express.static('public'));
       return res.sendStatus(400);
     }
     var id = req.params.id;
-    var item = storage.items[id];
+    var item = storage.items.indexOf[id];
     console.log('id: '+ id + ' item: ' + item );
-    storage.delete(id);
-    res.status(204);
+    storage.delete(id, item);
+    res.sendStatus(204);
   });
 
   app.put('items/:id', jsonParser, function(req, res) {
