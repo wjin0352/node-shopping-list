@@ -8,7 +8,6 @@ MongoClient.connect('mongodb://localhost/snippets', function(err, db) {
         return;
     }
     console.log('Connected to MongoDB database');
-    db.close();
 
     var collection = db.collection('snippets');
 
