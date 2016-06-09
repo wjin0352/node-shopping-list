@@ -1,3 +1,31 @@
+// var chai = require('chai');
+// var chaiHttp = require('chai-http');
+
+// // You set the global.environment variable to equal 'test' to make the application use the testing database rather than the development or production database.
+// global.environment = 'test';
+// var server = require('../server.js');
+// var Item = require('../models/item');
+// var seed = require('../db/seed');
+
+// var should = chai.should();
+// var app = server.app;
+
+// chai.use(chaiHttp);
+
+// describe('Shopping List', function() {
+//     before(function(done) {
+//         seed.run(function() {
+//             done();
+//         });
+//     });
+
+//     after(function(done) {
+//         Item.remove(function() {
+//             done();
+//         });
+//     });
+// });
+
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../server.js');
