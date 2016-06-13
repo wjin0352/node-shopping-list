@@ -113,6 +113,11 @@ describe('Shopping List', function() {
       .end(function(err, res) {
         expect(err).to.be.null;
         res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('name');
+        res.body.should.have.property('_id');
+        res.body.name.should.equal('Broad beans');
         console.log(res.body);
         done();
       });
