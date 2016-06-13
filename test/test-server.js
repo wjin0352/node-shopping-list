@@ -49,7 +49,6 @@ describe('Shopping List', function() {
       .get('/items')
       .end(function(err, res) {
         var items = res.body;
-        // console.log(items[0]);
 
         expect(err).to.be.null;
         res.should.have.status(200);
