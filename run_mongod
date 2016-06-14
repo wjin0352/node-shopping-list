@@ -1,0 +1,1 @@
+mongod --dbpath=/Users/won/src/thinkful/node/unit2/lesson2/shopping-list/mongo_data

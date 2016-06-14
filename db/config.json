@@ -1,0 +1,11 @@
+{
+    "production": {
+        "url": "mongodb://<dbuser>:<dbpassword>@ds051933.mlab.com:51933/shopping-list"
+    },
+    "test": {
+        "url": "mongodb://localhost/shopping-list-test"
+    },
+    "development": {
+        "url": "mongodb://localhost/shopping-list-dev"
+    }
+}

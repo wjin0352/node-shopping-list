@@ -1,0 +1,17 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.2-precise
+    packages:
+    - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: UV4eOpNQCwUd9EaQSnfjqXJ56Pn6ETKYrlZACFMp/MwbbEMa+605KEs+x+0bSdDwFkdj66euUG3qlFhpYUxeqa1Qye6BOuG3U4IKoHFE6gDoS8r5dhp3o6GnjcDZQ7bgD2Oe/8URATfhLxWFm04iw10+d/jHwWy4Zb6Hnqp/IEr2rRPWtcmkjX2ewpI9p+voTfaS48v+vqF4CGEnmcHd6INoFOpcoRV2dN1y2X0Vxr926JwapiHGoaMQ3jw7lEPmYFh3DtMyX8SbuBmdX9g8s14ehl7f9kVPw6SvgfzFItUo11+qhKRyZJz1NdnsfR5dV5VG1aAz7FNi4Ezmif3wYgO5+iGflvuU7kVHPH2lsCE3MQwDAkkoX0x8nczeWA0679m4XwrJf47jSaGQjdB30NGf7IP55bCINPZf8qX2VakRwQAjZ5rxUUcl6zTPJ2lIkPiL9t2nhw5TYSCEqs0iOD2jJx4H13e++oXspXbEuXdnL23tABKmURD//BesSTXaGcC4Yt/g98MGwqBQBGTbFSkVraUQkxeeEwLPmtPHzAXGdu0ktGmfS8E27MSERbJX92dSvzrDUOSiABSR2UsWbDgdHcC1MefthQMYdf6evRPK41+2hi1UoOppkY4gZh44GJmRVfmsH20LdWG7ysbn1iyEji5UzeJGQd1uihhd4i0=
+  app: damp-crag-40657
+  on:
+    repo: wjin0352/node-shopping-list
