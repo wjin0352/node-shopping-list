@@ -80,20 +80,15 @@ describe('Shopping List', function() {
         .put('/items/' + item.id )
         .send({'name': 'Steak'})
         .end(function(err, res) {
-
-          //  why cant i use res.body? or res.body.name  but i can use item now???
-
-          // var item = res.body;
-          console.log(item);
+          var item = res.body;
           expect(err).to.be.null;
           res.should.have.status(200);
           item.should.have.property('name');
-          item.should.have.property('id');
+          item.should.have.property('_id');
           item.name.should.be.a('string');
           item.should.be.a('object');
-          item.should.have.property('id');
           item.name.should.be.a('string');
-          // item.name.should.equal('Steak');
+          item.name.should.equal('Steak');
           done();
         });
     });

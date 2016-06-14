@@ -21,7 +21,7 @@ exports.list = function(callback, errback) {
 };
 
 exports.update = function(id, newName, callback, errback) {
-  Item.update({_id: id}, {$set: {name: newName}}, {new: true}, function(err, item) {
+  Item.findOneAndUpdate({_id: id}, {name: newName}, {new: true}, function(err, item) {
     if (err) {
       errback(err);
       return;
